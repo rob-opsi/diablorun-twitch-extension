@@ -5,10 +5,18 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Development
+
+Create a file called `.env.development.local` with contents
+```
+VUE_APP_CHANNEL_ID=TWITCH_USERNAME_HERE
+```
+Then run
 ```
 npm run serve
 ```
+
+After making changes to the `.env.development.local` file the development server must be restarted.
 
 ### Compiles and minifies for production
 ```
@@ -19,6 +27,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
