@@ -28,6 +28,10 @@ body {
   background-color: #333; // Temporary
 }
 
+img {
+  max-height: 120px;
+}
+
 .icon {
   cursor: pointer;
   display: inline-block;
@@ -37,8 +41,14 @@ body {
   left: 50px;
 }
 
-img {
-  max-height: 148px;
+.icon img {
+  border-radius: 50%;
+  transition: border-radius 1s;
+}
+
+.icon img:hover {
+  border-radius: 6px;
+  transition: border-radius 0.5s;
 }
 
 .container-relative {
@@ -77,8 +87,8 @@ img {
 }
 
 .column {
-  height: 150px;
-  width: 150px;
+  height: 128px;
+  width: 128px;
 
   display: grid;
   justify-items: center;
@@ -96,7 +106,7 @@ img {
 
 .tooltip .tooltip-text {
   visibility: hidden;
-  width: 120px;
+  width: 220px;
   background-color: black;
   color: #fff;
   text-align: center;
