@@ -1,13 +1,22 @@
 <template>
   <div class="position-relative">
-    <p style="color: red" @click="toggle()">ICON HERE FOR CLICKING</p>
+    <div @click="toggle()" class="icon">
+      <img src="./assets/icons/sor.png" />
+    </div>
     <div v-if="visible" class="container-absolute">
       <div v-if="notFound" class="container-fixed">
         DiabloRun character not found.
       </div>
       <div v-else class="container-fixed">
-        <div class="column" v-for="slot of characterItemSlots" :key="slot">
-          <ItemSlot :snapshot="snapshot" :item-slot="slot" />
+        <div class="grid">
+          <div class="column" v-for="slot of characterItemSlots" :key="slot">
+            <ItemSlot :snapshot="snapshot" :item-slot="slot" />
+          </div>
+        </div>
+        <div class="footer">
+          <a arget="_blank" href="link to char">
+            <img src="./assets/dr_logo.png" />
+          </a>
         </div>
       </div>
     </div>
@@ -16,7 +25,16 @@
 
 <style lang="scss">
 body {
-  background-color: #ddd;
+  background-color: #333; // Temporary
+}
+
+.icon {
+  cursor: pointer;
+  display: inline-block;
+
+  position: relative;
+  top: 50px;
+  left: 50px;
 }
 
 img {
@@ -30,22 +48,32 @@ img {
 .container-absolute {
   // TODO: position correctly relative to icon
   position: absolute;
-  top: 500;
-  left: 100;
+  top: 128px;
+  left: 57px;
 }
 
 .container-fixed {
   padding: 6px;
   position: fixed;
 
-  border: 2px solid #111119;
   border-radius: 6px;
 
+  background-image: url("./assets/bg.jpg");
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer img {
+  margin-top: 12px;
+  height: 24px;
+}
+
+.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 6px;
-
-  background-image: url("./assets/bg.jpg");
 }
 
 .column {
@@ -91,7 +119,7 @@ import ItemSlot from "./components/ItemSlot.vue";
 export default {
   name: "App",
   components: {
-    ItemSlot
+    ItemSlot,
   },
   data() {
     return {
@@ -111,8 +139,8 @@ export default {
         "boots",
         "ring_left",
         "amulet",
-        "ring_right"
-      ]
+        "ring_right",
+      ],
     };
   },
   created() {
@@ -154,7 +182,7 @@ export default {
       } catch (err) {
         this.notFound = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
