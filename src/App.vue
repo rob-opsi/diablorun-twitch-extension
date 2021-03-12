@@ -112,12 +112,14 @@ img {
 
 .tooltip .tooltip-text {
   visibility: hidden;
-  width: 220px;
   background-color: black;
   color: #fff;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 5px 0;
+
+  white-space: nowrap;
+
 
   /* Position the tooltip */
   position: absolute;
