@@ -3,17 +3,16 @@
     <div v-if="item" class="tooltip">
       <img :src="imageSrc" />
       <div class="tooltip-text">
-        <h5>
+        <h1>
           <span v-if="runeword" class="quality-gold">
             {{ runeword }}<br />
           </span>
           <span :class="`quality-${runeword ? 'socketed' : item.quality}`">
             {{ runeword ? item.base_name : item.name }}
           </span>
-        </h5>
+        </h1>
         <p
-          class="mb-0 body-2"
-          :class="{ 'error--text': property.includes('ÿc1') }"
+          :class="{ 'quality--red': property.includes('ÿc1') }"
           v-for="property of properties"
           :key="property"
         >
@@ -28,6 +27,10 @@
 <style scoped lang="scss">
 .quality-yellow {
   color: #fdfd70;
+}
+
+.quality-red {
+  color: #e72626;
 }
 
 .quality-orange {

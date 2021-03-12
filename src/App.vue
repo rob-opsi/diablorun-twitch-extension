@@ -4,9 +4,7 @@
       <img src="./assets/icons/sor.png" @click="toggle()" />
     </div>
     <div v-if="visible" class="container">
-      <div v-if="notFound">
-        DiabloRun character not found.
-      </div>
+      <div v-if="notFound">DiabloRun character not found.</div>
       <div v-else>
         <div class="grid">
           <div class="column" v-for="slot of characterItemSlots" :key="slot">
@@ -29,7 +27,14 @@
 <style lang="scss">
 .app {
   display: flex;
-  margin: 25px 0 0 50px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+body {
+  font-size: 14px;
+  user-select: none;
+  font-family: "Roboto", sans-serif;
 }
 
 img {
@@ -40,7 +45,7 @@ img {
 .icon img {
   cursor: pointer;
   border-radius: 50%;
-  transition: border-radius 1s;
+  transition: border-radius 0.5s;
 }
 
 .icon img:hover {
@@ -55,8 +60,9 @@ img {
   background-image: url("./assets/bg.jpg");
   margin-left: 15px;
 
-  width: calc(100% - 200px);
-  max-width: 720px;
+  width: calc(100% - 33%);
+  min-width: 282px;
+  max-width: 600px;
 }
 
 .footer {
@@ -91,25 +97,36 @@ img {
 }
 
 // Item tooltip styles
+h1 {
+  font-size: .9rem;
+  margin: 0;
+  margin-bottom: 0.25rem;
+}
+
 .tooltip {
   position: relative;
-  display: inline-block;
 }
 
 .tooltip .tooltip-text {
   visibility: hidden;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  padding: 5px 0;
+  padding: 0.5rem;
+  margin-top: .5rem;
 
   white-space: nowrap;
 
-
   /* Position the tooltip */
   position: absolute;
+
+  text-align: center;
   z-index: 1;
+}
+
+.tooltip-text p {
+  margin: 0;
 }
 
 .tooltip:hover .tooltip-text {
@@ -153,7 +170,7 @@ export default {
     );
 
     if (process.env.NODE_ENV === "development") {
-      document.body.style.backgroundColor = '#333';
+      document.body.style.backgroundColor = "#333";
       this.show();
     }
   },
