@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="footer">
-          <a arget="_blank" href="link to char">
+          <a target="_blank" :href="`https://diablo.run/${snapshot.character.user_name}/@`">
             <img src="./assets/dr_logo.png" />
           </a>
         </div>
