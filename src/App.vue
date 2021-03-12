@@ -14,7 +14,10 @@
           </div>
         </div>
         <div class="footer">
-          <a target="_blank" :href="`https://diablo.run/${snapshot.character.user_name}/@`">
+          <a
+            target="_blank"
+            :href="`https://diablo.run/${snapshot.character.user_name}/@`"
+          >
             <img src="./assets/dr_logo.png" />
           </a>
         </div>
@@ -37,7 +40,7 @@ img {
   display: inline-block;
 
   position: relative;
-  top: 50px;
+  top: 25px;
   left: 50px;
 }
 
@@ -47,7 +50,7 @@ img {
 }
 
 .icon img:hover {
-  border-radius: 6px;
+  border-radius: 4px;
   transition: border-radius 0.5s;
 }
 
@@ -58,15 +61,15 @@ img {
 .container-absolute {
   // TODO: position correctly relative to icon
   position: absolute;
-  top: 128px;
-  left: 57px;
+  top: 33px;
+  left: 126px;
 }
 
 .container-fixed {
   padding: 6px;
   position: fixed;
 
-  border-radius: 6px;
+  border-radius: 4px;
 
   background-image: url("./assets/bg.jpg");
 }
@@ -87,8 +90,11 @@ img {
 }
 
 .column {
-  height: 128px;
-  width: 128px;
+  min-height: 90px;
+  max-height: 128px;
+
+  max-height: 128px;
+  min-width: 90px;
 
   display: grid;
   justify-items: center;
