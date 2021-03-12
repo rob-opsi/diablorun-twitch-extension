@@ -1,13 +1,13 @@
 <template>
-  <div class="position-relative">
-    <div @click="toggle()" class="icon">
-      <img src="./assets/icons/sor.png" />
+  <div class="app">
+    <div class="icon">
+      <img src="./assets/icons/sor.png" @click="toggle()" />
     </div>
-    <div v-if="visible" class="container-absolute">
-      <div v-if="notFound" class="container-fixed">
+    <div v-if="visible" class="container">
+      <div v-if="notFound">
         DiabloRun character not found.
       </div>
-      <div v-else class="container-fixed">
+      <div v-else>
         <div class="grid">
           <div class="column" v-for="slot of characterItemSlots" :key="slot">
             <ItemSlot :snapshot="snapshot" :item-slot="slot" />
@@ -27,24 +27,18 @@
 </template>
 
 <style lang="scss">
-body {
-  background-color: #333; // Temporary
+.app {
+  display: flex;
+  margin: 25px 0 0 50px;
 }
 
 img {
   max-height: 120px;
 }
 
-.icon {
-  cursor: pointer;
-  display: inline-block;
-
-  position: relative;
-  top: 25px;
-  left: 50px;
-}
-
+// Icon styles
 .icon img {
+  cursor: pointer;
   border-radius: 50%;
   transition: border-radius 1s;
 }
@@ -54,24 +48,15 @@ img {
   transition: border-radius 0.5s;
 }
 
-.container-relative {
-  position: relative;
-}
-
-.container-absolute {
-  // TODO: position correctly relative to icon
-  position: absolute;
-  top: 33px;
-  left: 126px;
-}
-
-.container-fixed {
+// Container styles
+.container {
   padding: 6px;
-  position: fixed;
-
   border-radius: 4px;
-
   background-image: url("./assets/bg.jpg");
+  margin-left: 15px;
+
+  width: calc(100% - 200px);
+  max-width: 720px;
 }
 
 .footer {
@@ -105,6 +90,7 @@ img {
     0 1px 3px 0 rgba(0, 0, 0, 0.12);
 }
 
+// Item tooltip styles
 .tooltip {
   position: relative;
   display: inline-block;
@@ -167,6 +153,7 @@ export default {
     );
 
     if (process.env.NODE_ENV === "development") {
+      document.body.style.backgroundColor = '#333';
       this.show();
     }
   },
