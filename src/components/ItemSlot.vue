@@ -20,7 +20,7 @@
         </p>
       </div>
     </div>
-    <div v-else>{{ itemSlot }} empty</div>
+    <div v-else class="quality-empty">{{ itemSlot }} empty</div>
   </div>
 </template>
 
@@ -55,6 +55,11 @@
 }
 
 .quality-white {
+  color: #fdfdfd;
+}
+
+.quality-empty {
+  opacity: 0.5;
   color: #fdfdfd;
 }
 </style>

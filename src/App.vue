@@ -173,7 +173,7 @@ export default {
     );
 
     if (process.env.NODE_ENV === "development") {
-      document.body.style.backgroundColor = "#333";
+     // document.body.style.backgroundColor = "#333";
       this.show();
     }
   },
