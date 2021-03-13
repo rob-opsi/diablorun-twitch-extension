@@ -1,7 +1,8 @@
 <template>
   <div class="app">
-    <div class="icon">
-      <img src="./assets/icons/sor.png" @click="toggle()" />
+    <div class="icon" @click="toggle()">
+      <HeroIcon v-if="snapshot" :hero="snapshot.character.hero" />
+      <img v-if="!snapshot" src="./assets/logo.png" />
     </div>
     <div v-if="visible" class="container">
       <div v-if="notFound">DiabloRun character not found.</div>
@@ -136,11 +137,13 @@ h1 {
 
 <script>
 import ItemSlot from "./components/ItemSlot.vue";
+import HeroIcon from "./components/HeroIcon.vue";
 
 export default {
   name: "App",
   components: {
     ItemSlot,
+    HeroIcon,
   },
   data() {
     return {
