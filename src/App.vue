@@ -1,10 +1,10 @@
 <template>
-  <div class="app">
-    <div class="icon" @click="toggle()">
+  <div class="app" @mouseenter="showIcon()" @mouseleave="hideIcon()">
+    <div class="icon" @click="toggle()" v-if="iconVisible || containerVisible">
       <HeroIcon v-if="snapshot" :hero="snapshot.character.hero" />
       <img v-if="!snapshot" src="./assets/logo.png" />
     </div>
-    <div v-if="visible" class="container">
+    <div v-if="containerVisible" class="container">
       <div v-if="notFound">DiabloRun character not found.</div>
       <div v-else>
         <div class="grid">
@@ -28,8 +28,10 @@
 <style lang="scss">
 .app {
   display: flex;
-  margin-top: 50px;
-  margin-left: 50px;
+  padding-top: 50px;
+  padding-left: 50px;
+  width: 100vw;
+  height: 100vh;
 }
 
 body {
@@ -147,7 +149,8 @@ export default {
   },
   data() {
     return {
-      visible: false,
+      iconVisible: false,
+      containerVisible: false,
       channelId: process.env.VUE_APP_CHANNEL_ID,
       notFound: false,
       snapshot: null,
@@ -178,8 +181,14 @@ export default {
     }
   },
   methods: {
+    showIcon() {
+      this.iconVisible = true;
+    },
+    hideIcon() {
+      this.iconVisible = false;
+    },
     async toggle() {
-      if (this.visible) {
+      if (this.containerVisible) {
         this.hide();
       } else {
         await this.show();
@@ -187,10 +196,10 @@ export default {
     },
     async show() {
       await this.sync();
-      this.visible = true;
+      this.containerVisible = true;
     },
     async hide() {
-      this.visible = false;
+      this.containerVisible = false;
     },
     async sync() {
       if (!this.channelId) {
