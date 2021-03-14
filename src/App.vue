@@ -1,24 +1,30 @@
 <template>
   <div class="app" @mouseenter="showIcon()" @mouseleave="hideIcon()">
-    <div class="icon" @click="toggle()" v-if="iconVisible || containerVisible">
-      <HeroIcon v-if="snapshot" :hero="snapshot.character.hero" />
-      <img v-if="!snapshot" src="./assets/logo.png" />
-    </div>
-    <div v-if="containerVisible" class="container">
-      <div v-if="notFound">DiabloRun character not found.</div>
-      <div v-else>
-        <div class="grid">
-          <div class="column" v-for="slot of characterItemSlots" :key="slot">
-            <ItemSlot :snapshot="snapshot" :item-slot="slot" />
+    <div class="flex-container">
+      <div
+        class="icon"
+        @click="toggle()"
+        v-if="iconVisible || containerVisible"
+      >
+        <HeroIcon v-if="snapshot" :hero="snapshot.character.hero" />
+        <img v-if="!snapshot" src="./assets/logo.png" />
+      </div>
+      <div v-if="containerVisible" class="container">
+        <div v-if="notFound">DiabloRun character not found.</div>
+        <div v-else>
+          <div class="grid">
+            <div class="column" v-for="slot of characterItemSlots" :key="slot">
+              <ItemSlot :snapshot="snapshot" :item-slot="slot" />
+            </div>
           </div>
-        </div>
-        <div class="footer">
-          <a
-            target="_blank"
-            :href="`https://diablo.run/${snapshot.character.user_name}/@`"
-          >
-            <img src="./assets/dr_logo.png" />
-          </a>
+          <div class="footer">
+            <a
+              target="_blank"
+              :href="`https://diablo.run/${snapshot.character.user_name}/@`"
+            >
+              <img src="./assets/dr_logo.png" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -27,11 +33,15 @@
 
 <style lang="scss">
 .app {
-  display: flex;
-  padding-top: 50px;
-  padding-left: 50px;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+}
+
+.flex-container {
+  margin-top: 50px;
+  margin-left: 50px;
+  display: flex;
 }
 
 body {
@@ -101,7 +111,7 @@ img {
 
 // Item tooltip styles
 h1 {
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin: 0;
   margin-bottom: 0.25rem;
 }
@@ -117,7 +127,7 @@ h1 {
   text-align: center;
   border-radius: 4px;
   padding: 0.5rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 
   white-space: nowrap;
 
@@ -176,7 +186,7 @@ export default {
     );
 
     if (process.env.NODE_ENV === "development") {
-     // document.body.style.backgroundColor = "#333";
+      // document.body.style.backgroundColor = "#333";
       this.show();
     }
   },
